@@ -1,5 +1,33 @@
+#packages:
+  #- name: sample
+    #actions:
+      #- name: hello
+        #runtime: 'python:default'
+
+parameters: {}
+environment: {}
 packages:
-  - name: sample
-    actions:
-      - name: hello
-        runtime: 'python:default'
+    - name: auxeris
+      shared: false
+      environment: {}
+      parameters: {}
+      annotations: {}
+      functions:
+        - name: lead-generator
+          binary: false
+          main: ""
+          runtime: php:8.2
+          web: raw
+          parameters: {}
+          environment:
+            DB_HOST: "${DB_HOST}"
+            DB_NAME: "${DB_NAME}"
+            DB_PASSWORD: "${DB_PASSWORD}"
+            DB_PORT: "${DB_PORT}"
+            DB_USER: "${DB_USER}"
+            LOG_DESTINATIONS: "${LOG_DESTINATIONS}"
+          annotations: {}
+          limits:
+            timeout: 30000
+            memory: 256
+            logs: 256
